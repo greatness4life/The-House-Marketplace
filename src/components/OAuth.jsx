@@ -20,7 +20,7 @@ const OAuth = () => {
       const docSnap = await getDoc(docRef);
 
       if (!docSnap.exists()) {
-        await setDoc(doc, "users", user.uid, {
+        await setDoc(docRef, {
           name: user.displayName,
           email: user.email,
           timestamp: serverTimestamp(),

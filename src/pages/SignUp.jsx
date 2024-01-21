@@ -77,7 +77,6 @@ const SignUp = () => {
       }
     }
   };
-  // For Password MisMatch
 
   return (
     <>
