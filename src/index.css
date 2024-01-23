@@ -169,6 +169,37 @@ button {
   font-weight: 800;
 }
 
+.pagenotfound {
+  display: flex;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+}
+
+.notFound {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+.home {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home--text {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #03020c68;
+  padding-right: 0.5rem;
+}
+
+.houseIcon {
+  width: 2.3rem;
+  border-radius: 50%;
+}
 .navbar {
   position: fixed;
   left: 0;
