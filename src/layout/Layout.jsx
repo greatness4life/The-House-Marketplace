@@ -15,6 +15,7 @@ import Setting from "../pages/Setting";
 import Listing from "../pages/Listing";
 import Contact from "../pages/Contact";
 import EditListing from "../pages/EditListing";
+import PageNotFound from "../pages/PageNotFound";
 
 const Layout = () => {
   return (
@@ -38,6 +39,7 @@ const Layout = () => {
             element={<Listing />}
           />
           <Route path="/contact/:landlordId" element={<Contact />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
         <Navbar />
       </Router>
