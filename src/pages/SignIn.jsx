@@ -44,7 +44,7 @@ const SignIn = () => {
     }
   };
   if (loading) {
-    return <div>Logging In</div>;
+    return <h2>Logging In</h2>;
   }
 
   return (
