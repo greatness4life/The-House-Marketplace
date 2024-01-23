@@ -32,7 +32,13 @@ const OAuth = () => {
       setLoading(false);
       navigate("/");
     } catch (error) {
-      toast.error(error.message);
+      if (error.code === "auth/popup-blocked") {
+        toast.warning("Please, allow pop-up");
+      } else if (error.code === "auth/popup-closed-by-user") {
+        toast.error("You close the Google registration page");
+      } else {
+        toast.error("Something went wrong");
+      }
     }
   };
 
