@@ -9,6 +9,7 @@ import OAuth from "../components/OAuth";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     email: "",
     password: "",
@@ -24,6 +25,7 @@ const SignIn = () => {
     }));
   };
   const onSubmit = async (e) => {
+    setLoading(true);
     e.preventDefault();
     try {
       const auth = getAuth();
@@ -36,10 +38,14 @@ const SignIn = () => {
       if (userDetails.user) {
         navigate("/");
       }
+      setLoading(false);
     } catch (error) {
       toast.error("Check Your Credentials");
     }
   };
+  if (loading) {
+    return <div>Logging In</div>;
+  }
 
   return (
     <>
