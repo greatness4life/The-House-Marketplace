@@ -40,6 +40,7 @@ const OAuth = () => {
         toast.error("Something went wrong");
       }
     }
+    setLoading(false);
   };
 
   if (loading) {
