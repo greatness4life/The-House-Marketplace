@@ -35,7 +35,7 @@ const OAuth = () => {
       if (error.code === "auth/popup-blocked") {
         toast.warning("Please, allow pop-up");
       } else if (error.code === "auth/popup-closed-by-user") {
-        toast.error("You close the Google registration page");
+        toast.error("You close the Google Sign-in page");
       } else {
         toast.error("Something went wrong");
       }
@@ -44,7 +44,7 @@ const OAuth = () => {
   };
 
   if (loading) {
-    return <h2>logging In...</h2>;
+    return <h2 className="">...</h2>;
   }
   return (
     <div className="socialLogin">
