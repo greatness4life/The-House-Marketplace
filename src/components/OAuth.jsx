@@ -4,12 +4,15 @@ import { doc, setDoc, getDoc, serverTimestamp } from "firebase/firestore";
 import { db } from "../firebase.config";
 import { toast } from "react-toastify";
 import googleIcon from "../assets/svg/googleIcon.svg";
+import { useState } from "react";
 
 const OAuth = () => {
+  const [loading, setLoading] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
 
   const onGoogleClick = async () => {
+    setLoading(true);
     try {
       const auth = getAuth();
       const provider = new GoogleAuthProvider();
@@ -26,12 +29,16 @@ const OAuth = () => {
           timestamp: serverTimestamp(),
         });
       }
+      setLoading(false);
       navigate("/");
     } catch (error) {
       toast.error(error.message);
     }
   };
 
+  if (loading) {
+    return <h2>logging In...</h2>;
+  }
   return (
     <div className="socialLogin">
       <p>Sign {location.pathname === "/sign-up" ? "up" : "in"} with</p>
