@@ -6,6 +6,7 @@ import KeyboardArrowIcon from "../assets/icons/KeyboardArrowIcon";
 import visibilityIcon from "../assets/svg/visibilityIcon.svg";
 import hiddenIcon from "../assets/svg/hidden.svg";
 import OAuth from "../components/OAuth";
+import Loading from "../components/Loading";
 
 const SignIn = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -42,13 +43,11 @@ const SignIn = () => {
     } catch (error) {
       toast.error("Check Your Credentials");
     }
+    setLoading(false);
   };
-  if (loading) {
-    return <h2>Logging In</h2>;
-  }
-
   return (
     <>
+      {loading && <Loading />}
       <div className="pageContainer">
         <header>
           <p className="pageHeader">Welcome Back!</p>

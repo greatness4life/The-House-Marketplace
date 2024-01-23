@@ -12,6 +12,7 @@ import KeyboardArrowIcon from "../assets/icons/KeyboardArrowIcon";
 import visibilityIcon from "../assets/svg/visibilityIcon.svg";
 import hiddenIcon from "../assets/svg/hidden.svg";
 import OAuth from "../components/OAuth";
+import Loading from "../components/Loading";
 
 const SignUp = () => {
   const [showPassword, setShowPassword] = useState(false);
@@ -21,6 +22,7 @@ const SignUp = () => {
     password: "",
     confirmPassword: "",
   });
+  const [loading, setLoading] = useState();
 
   const { name, email, password, confirmPassword } = formData;
 
@@ -45,6 +47,7 @@ const SignUp = () => {
     if (passwordMismatch) {
       return;
     }
+    setLoading(true);
     try {
       const auth = getAuth();
       const userDetails = await createUserWithEmailAndPassword(
@@ -68,6 +71,7 @@ const SignUp = () => {
       formDataCopy.timestamp = serverTimestamp();
 
       await setDoc(doc(db, "users", user.uid), formDataCopy);
+      setLoading(false);
       navigate("/");
     } catch (error) {
       if (error.code === "auth/email-already-in-use") {
@@ -76,10 +80,12 @@ const SignUp = () => {
         toast.error("Something went wrong");
       }
     }
+    setLoading(false);
   };
 
   return (
     <>
+      {loading && <Loading />}
       <div className="pageContainer">
         <header>
           <p className="pageHeader">Welcome Back!</p>
@@ -161,22 +167,6 @@ const SignUp = () => {
               )}
             </div>
             <p className="passwordMismatch">{passwordMismatch}</p>
-            {/* <div className="profileAvatar">
-              <label htmlFor="avatar" className="avatar">
-                Uplaod Profile Picture
-              </label>
-              <input
-                type="file"
-                id="avatar"
-                name="avatar"
-                accept="image/png, image/jpeg"
-                className="avatar-img"
-                onChange={imgUpload}
-              />
-            </div> */}
-            {/* <Link to="/forgot-password" className="forgotPasswordLink">
-              Forgot Password?
-            </Link> */}
             <div className="signInBar">
               <p className="signInText">Sign Up</p>
               <button disabled={passwordMismatch} className="signInButton">
