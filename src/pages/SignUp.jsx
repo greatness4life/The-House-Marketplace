@@ -106,36 +106,6 @@ const SignUp = () => {
               required
               autoComplete="on"
             />
-            {/* <input
-              type="text"
-              className="nameInput"
-              placeholder="Country"
-              id="country"
-              value={country}
-              onChange={onChange}
-              autoComplete="on"
-            />
-            <input
-              type="text"
-              className="nameInput"
-              placeholder="Address"
-              id="address"
-              value={address}
-              onChange={onChange}
-              autoComplete="on"
-            />
-            <input
-              type="tel"
-              className="nameInput"
-              placeholder="Phone Number"
-              id="tel"
-              value={tel}
-              onChange={onChange}
-              required
-              autoComplete="on"
-              pattern="[0-9]{10}"
-            /> */}
-
             <div className="passwordInputDiv">
               <input
                 type={showPassword ? "text" : "password"}
